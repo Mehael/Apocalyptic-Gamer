@@ -12,6 +12,7 @@ TagManager:
   - Trap
   - Weak
   - Slime
+  - Key
   layers:
   - Default
   - TransparentFX
