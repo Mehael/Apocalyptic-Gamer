@@ -35,6 +35,9 @@ public class Board : MonoBehaviour {
         current = this;
         cells = ParseNodeToTiles(transform);
         items = ParseNodeToTiles(overBoardNode);
+
+        Energy.instance.Start();
+        Screen.instance.Start();
     }
 
     public int KeysHere = 0;

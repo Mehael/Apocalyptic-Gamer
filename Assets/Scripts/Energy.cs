@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Energy : MonoBehaviour {
@@ -43,9 +40,12 @@ public class Energy : MonoBehaviour {
             RemoveEnergy(moveWithoutScreenCost);
     }
 
-    private void Start()
-    {  
-        SetEnergy(Board.current.StartEnergyForLevel);
+    public void Start() 
+    {
+        if (Board.current == null)
+            SetEnergy(17);
+        else
+            SetEnergy(Board.current.StartEnergyForLevel);
     }
 
     private void SetEnergy(int value)
@@ -53,7 +53,7 @@ public class Energy : MonoBehaviour {
         if (value < 0)
         {
             value = 0;
-            Application.LoadLevel(Application.loadedLevel);
+            if (Board.current!=null) Application.LoadLevel(Application.loadedLevel);
         }
         else
             currentEnergy = value;
