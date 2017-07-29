@@ -6,6 +6,21 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     private Board board;
     public Vector2 coords;
+    public static PlayerController instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    private int SlimedHPCounter = 0;
+    private Tile Slime;
+    public int SlimedHP = 2;
+    public void BecomeSlimed(Tile slime)
+    {
+        SlimedHPCounter = SlimedHP;
+        Slime = slime;
+    }
 
     void Start () {
         board = Board.current;
@@ -14,6 +29,27 @@ public class PlayerController : MonoBehaviour {
 
     private void MoveTo(Vector2 enterPoint)
     {
+        Energy.instance.Move();
+
+        if (SlimedHPCounter>0)
+        {
+            SlimedHPCounter--;
+            Instantiate<GameObject>(Slime.gameObject,
+                new Vector3(enterPoint.x + 0.5f, enterPoint.y + 0.5f, Slime.transform.position.z),
+                Quaternion.identity).AddComponent<DieAfterSecond>() ;
+
+            if (SlimedHPCounter < 1 || !Slime.SlimeStillLiveAfterThrow(enterPoint))
+            {
+                Slime.Die();
+                SlimedHPCounter = 0;
+            } else
+            {
+                Board.current.TurnDone(enterPoint, false);
+            }
+
+            return;
+        }
+
         Board.current.TurnDone(enterPoint);
 
         if (!board.cells.ContainsKey(enterPoint))
@@ -23,7 +59,6 @@ public class PlayerController : MonoBehaviour {
         }
 
         var nextTile = board.cells[enterPoint];
-        Energy.instance.Move();
 
         if (nextTile.tag == "Death")
             Fall();

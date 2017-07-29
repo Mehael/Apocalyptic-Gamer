@@ -21,12 +21,33 @@ public class Tile : MonoBehaviour {
         sprite.color = startColor;
     }
 
-    public bool PressedSignUp()
+    public bool PressedSignUp(bool isPlayer = true)
     {
+        if (tag == "Slime" && isPlayer)
+            PlayerController.instance.BecomeSlimed(this);
+
         if (tag == "Weak" || tag == "Trap")
             return true;
 
         return false;
+    }
+
+    public bool SlimeStillLiveAfterThrow(Vector2 position)
+    {
+        if (!Board.current.cells.ContainsKey(position) || Board.current.cells[position].tag == "Death")
+        {
+            Die();
+            return false;
+        }
+
+        return true;
+    }
+
+    public void Die()
+    {
+        Debug.Log("Die");
+        tag = "Floor";
+        sprite.enabled = false;
     }
 
     public Sprite activeTrapState;

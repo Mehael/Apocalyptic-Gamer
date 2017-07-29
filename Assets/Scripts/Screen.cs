@@ -35,11 +35,15 @@ public class Screen : MonoBehaviour {
         {
             foreach (var tile in Board.current.cells.Values)
                 tile.GrayTint();
+            foreach (var tile in Board.current.items.Values)
+                tile.GrayTint();
             ScreenState.text = "GRAY";
         }
         else
         {
             foreach (var tile in Board.current.cells.Values)
+                tile.ColorTint();
+            foreach (var tile in Board.current.items.Values)
                 tile.ColorTint();
             ScreenState.text = "COLOR";
         }

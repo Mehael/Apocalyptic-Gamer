@@ -11,6 +11,7 @@ TagManager:
   - Unpassable
   - Trap
   - Weak
+  - Slime
   layers:
   - Default
   - TransparentFX
