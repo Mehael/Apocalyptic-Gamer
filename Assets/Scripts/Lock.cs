@@ -6,14 +6,17 @@ public class Lock : Tile {
     public Transform lockGo;
 
     void Start () {
-        if (Board.current.KeysHere > 0)
+        if (Board.current.KeysHere > WillOpenWhenXKeysStillOnLevel)
             lockGo.gameObject.SetActive(true);
         else
             lockGo.gameObject.SetActive(false);
     }
 
-    public void KeysCollected()
+    public int WillOpenWhenXKeysStillOnLevel = 0;
+
+    public void KeysCollected(int KeysStillOnLevel)
     {
-        lockGo.gameObject.SetActive(false);
+        if (KeysStillOnLevel <= WillOpenWhenXKeysStillOnLevel)
+            lockGo.gameObject.SetActive(false);
     }
 }

@@ -10,7 +10,7 @@ public class Board : MonoBehaviour {
 
     public int StartEnergyForLevel = 100;
     public Vector2 enterPoint;
-    public Vector2 exitPoint;
+    public List<Lock> exitPoints;
 
     public static Board current;
     private List<Tile> waitingTurnTiles = new List<Tile>();
@@ -42,8 +42,8 @@ public class Board : MonoBehaviour {
     public void GetKey()
     {
         KeysHere--;
-        if (KeysHere < 1)
-            cells[exitPoint].GetComponent<Lock>().KeysCollected();
+        foreach(var door in exitPoints)
+            door.KeysCollected(KeysHere);
     }
 
     Dictionary<Vector2,Tile> ParseNodeToTiles (Transform Node)
@@ -60,7 +60,7 @@ public class Board : MonoBehaviour {
             TilesList.Add(coords, child.GetComponent<Tile>());
 
             if (child.tag == "Enter") enterPoint = coords;
-            else if (child.tag == "Exit") exitPoint = coords;
+            else if (child.tag == "Exit") exitPoints.Add(child.GetComponent<Lock>());
             else if (child.tag == "Key") KeysHere++;
         }
 
