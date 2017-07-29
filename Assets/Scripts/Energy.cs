@@ -17,29 +17,9 @@ public class Energy : MonoBehaviour {
     public int moveWithGrayModeCost = 2;
     public int moveWithColorModeCost = 3;
 
-    private float timer = 0;
-    public float cooldownOfIdleEnergySpend = 5f;
-    public int idleWithoutScreenCost = 0;
-    public int idleWithGrayScreenCost = 1;
-    public int idleWithColorScreenCost = 1;
-
     private void Awake()
     {
         instance = this;
-    }
-
-    private void Update()
-    {
-        timer += Time.deltaTime;
-        if (timer < cooldownOfIdleEnergySpend) return;
-
-        timer = 0;
-        if (energState == Power.full)
-            RemoveEnergy(idleWithColorScreenCost);
-        else if(energState == Power.gray)
-            RemoveEnergy(idleWithGrayScreenCost);
-        else
-            RemoveEnergy(idleWithoutScreenCost);
     }
 
     public void SetPowerState(Power newState)
