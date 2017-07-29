@@ -10,6 +10,20 @@ public class Board : MonoBehaviour {
     public Vector2 exitPoint;
 
     public static Board current;
+    private List<Tile> waitingTurnTiles = new List<Tile>();
+
+    public void TurnDone(Vector2 PlayerCoords)
+    {
+        var newWaitingList = new List<Tile>();
+        foreach (var cell in waitingTurnTiles)
+            if (cell.StayOneMoreTurn())
+                newWaitingList.Add(cell);
+
+        if (cells.ContainsKey(PlayerCoords) && cells[PlayerCoords].PressedSignUp())
+            newWaitingList.Add(cells[PlayerCoords]);
+
+        waitingTurnTiles = newWaitingList;
+    }
 
 	void Awake () {
         current = this;

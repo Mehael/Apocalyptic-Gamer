@@ -14,22 +14,27 @@ public class PlayerController : MonoBehaviour {
 
     private void MoveTo(Vector2 enterPoint)
     {
+        Board.current.TurnDone(enterPoint);
+
         if (!board.cells.ContainsKey(enterPoint))
         {
-            AudioSystem.instance.PlayFallToHole();
-            Application.LoadLevel(Application.loadedLevel);
+            Fall();
             return;
         }
 
         var nextTile = board.cells[enterPoint];
         Energy.instance.Move();
 
+        if (nextTile.tag == "Death")
+            Fall();
+
         if (nextTile.tag == "Unpassable")
         {
             AudioSystem.instance.PlayWallStuck();
+            if (board.cells[coords].tag == "Death")
+                Fall();
             return;
         }
-
 
         transform.position = new Vector3(enterPoint.x + 0.5f, enterPoint.y + 0.5f, -1);
         coords = enterPoint;
@@ -38,6 +43,12 @@ public class PlayerController : MonoBehaviour {
             AudioSystem.instance.PlayTrapStep();
         else
             AudioSystem.instance.PlayFloorStep();
+    }
+
+    private static void Fall()
+    {
+        AudioSystem.instance.PlayFallToHole();
+        Application.LoadLevel(Application.loadedLevel);
     }
 
     void Update () {

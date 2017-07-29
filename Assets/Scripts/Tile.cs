@@ -20,4 +20,23 @@ public class Tile : MonoBehaviour {
     {
         sprite.color = startColor;
     }
+
+    public bool PressedSignUp()
+    {
+        if (tag == "Weak")
+            return true;
+
+        return false;
+    }
+
+    public bool StayOneMoreTurn()
+    {
+        if (tag == "Weak")
+        {
+            tag = "Death";
+            sprite.enabled = false;          
+        }
+
+        return false;
+    }
 }
