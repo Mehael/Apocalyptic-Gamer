@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScreenColors : MonoBehaviour {
-    public enum Power {zerodivision, none, gray, full, overcharge};
+public enum Power { zerodivision, none, gray, full, overcharge };
+
+public class Screen : MonoBehaviour {
     public Power startPower = Power.full;
     private Power currentPower;
     public Transform offedScreen;
@@ -13,7 +14,6 @@ public class ScreenColors : MonoBehaviour {
 
     void Start() {
         SetState(startPower);
-        //DontDestroyOnLoad(this);
     }
 
     private void SetState(Power newPower)
@@ -21,6 +21,8 @@ public class ScreenColors : MonoBehaviour {
         if ((newPower == Power.overcharge) || (newPower == Power.zerodivision)) return;
 
         currentPower = newPower;
+        Energy.instance.SetPowerState(currentPower);
+
         if (currentPower == Power.none)
         {
             offedScreen.gameObject.SetActive(true);

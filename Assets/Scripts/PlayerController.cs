@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour {
 
         transform.position = new Vector3(enterPoint.x + 0.5f, enterPoint.y + 0.5f, -1);
         coords = enterPoint;
+
+        Energy.instance.Move();
     }
 
     void Update () {

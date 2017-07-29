@@ -6,7 +6,7 @@ public class Tile : MonoBehaviour {
     private Color startColor;
     private SpriteRenderer sprite;
 
-    void Start () {
+    void Awake () {
         sprite = GetComponent<SpriteRenderer>();
         startColor = sprite.color;
 	}

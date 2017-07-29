@@ -5,6 +5,7 @@ using UnityEngine;
 public class Board : MonoBehaviour {
     public Dictionary<Vector2,Tile> cells = new Dictionary<Vector2, Tile>();
 
+    public int StartEnergyForLevel = 100;
     public Vector2 enterPoint;
     public Vector2 exitPoint;
 
