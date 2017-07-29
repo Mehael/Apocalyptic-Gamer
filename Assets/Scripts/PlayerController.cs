@@ -16,17 +16,28 @@ public class PlayerController : MonoBehaviour {
     {
         if (!board.cells.ContainsKey(enterPoint))
         {
+            AudioSystem.instance.PlayFallToHole();
             Application.LoadLevel(Application.loadedLevel);
             return;
         }
 
         var nextTile = board.cells[enterPoint];
-        if (nextTile.tag == "Unpassable") return;
+        Energy.instance.Move();
+
+        if (nextTile.tag == "Unpassable")
+        {
+            AudioSystem.instance.PlayWallStuck();
+            return;
+        }
+
 
         transform.position = new Vector3(enterPoint.x + 0.5f, enterPoint.y + 0.5f, -1);
         coords = enterPoint;
 
-        Energy.instance.Move();
+        if (nextTile.tag == "Trap")
+            AudioSystem.instance.PlayTrapStep();
+        else
+            AudioSystem.instance.PlayFloorStep();
     }
 
     void Update () {
