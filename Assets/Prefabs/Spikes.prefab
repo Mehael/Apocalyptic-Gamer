@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8776dc09daa515c46a4c6e5fe5357f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeTrapState: {fileID: 21300000, guid: 8d4eb45640ad24b41b8d75ead1f694b7, type: 3}
+  passiveTrapState: {fileID: 21300000, guid: 5bdd301ad1cefa74da8cd04aeb1cb706, type: 3}
 --- !u!212 &212295018987174096
 SpriteRenderer:
   m_ObjectHideFlags: 1
