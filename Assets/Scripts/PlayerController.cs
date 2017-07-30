@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour {
 
     private void MoveTo(Vector2 enterPoint)
     {
-        timer = 0;
         Energy.instance.Move();
 
         if (SlimedHPCounter>0)
@@ -87,20 +86,7 @@ public class PlayerController : MonoBehaviour {
         Application.LoadLevel(Application.loadedLevel);
     }
 
-
-    //private float timer = 0;
-    //public float cooldownOfIdleEnergySpend = 3f;
-
     void Update () {
-        /*
-        if (cooldownOfIdleEnergySpend>0)
-        {
-            timer += Time.deltaTime;
-            if (timer > cooldownOfIdleEnergySpend)
-                MoveTo(coords);
-        }
-        */
-
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             MoveTo(coords + Vector2.down);
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
