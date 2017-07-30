@@ -44,6 +44,7 @@ public class Energy : MonoBehaviour {
 
     public void Start() 
     {
+        energyLabel.gameObject.SetActive(true);
         if (Board.current == null)
             SetEnergy(17);
         else
