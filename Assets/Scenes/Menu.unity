@@ -2158,8 +2158,8 @@ MonoBehaviour:
   switchOnColorModeCost: 20
   switchOnGrayModeCost: 10
   moveWithoutScreenCost: 1
-  moveWithGrayModeCost: 1
-  moveWithColorModeCost: 1
+  moveWithGrayModeCost: 10
+  moveWithColorModeCost: 10
 --- !u!114 &1070365490
 MonoBehaviour:
   m_ObjectHideFlags: 0
