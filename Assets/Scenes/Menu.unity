@@ -1434,11 +1434,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyLabel: {fileID: 1577034104}
-  switchOnColorModeCost: 1
-  switchOnGrayModeCost: 1
+  switchOnColorModeCost: 20
+  switchOnGrayModeCost: 10
   moveWithoutScreenCost: 1
-  moveWithGrayModeCost: 3
-  moveWithColorModeCost: 5
+  moveWithGrayModeCost: 1
+  moveWithColorModeCost: 1
 --- !u!114 &1070365490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2099,7 +2099,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -146.2, y: 71.4}
+  m_AnchoredPosition: {x: -146.2, y: 71.399994}
   m_SizeDelta: {x: 240.19, y: 92.70999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1757049761
