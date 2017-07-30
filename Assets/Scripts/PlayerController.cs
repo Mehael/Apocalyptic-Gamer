@@ -88,13 +88,18 @@ public class PlayerController : MonoBehaviour {
     }
 
 
-    private float timer = 0;
-    public float cooldownOfIdleEnergySpend = 3f;
+    //private float timer = 0;
+    //public float cooldownOfIdleEnergySpend = 3f;
 
     void Update () {
-        timer += Time.deltaTime;
-        if (timer > cooldownOfIdleEnergySpend)
-            MoveTo(coords);
+        /*
+        if (cooldownOfIdleEnergySpend>0)
+        {
+            timer += Time.deltaTime;
+            if (timer > cooldownOfIdleEnergySpend)
+                MoveTo(coords);
+        }
+        */
 
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             MoveTo(coords + Vector2.down);
