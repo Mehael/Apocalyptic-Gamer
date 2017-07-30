@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Energy : MonoBehaviour {
     private Power energState;
-    private int currentEnergy;
+    public int currentEnergy;
     public Text energyLabel;
     public static Energy instance;
 
@@ -48,15 +50,26 @@ public class Energy : MonoBehaviour {
             SetEnergy(Board.current.StartEnergyForLevel);
     }
 
+    IEnumerator WaitAnyKayToLoad()
+    {
+        yield return new WaitForEndOfFrame();
+        while (Input.anyKeyDown == false)
+        {
+            yield return null;
+        }
+        RHandController.instance.LoadLevel(Application.loadedLevel);
+    }
+
     private void SetEnergy(int value)
     {
-        if (value < 0)
+        if (value <= 0)
         {
+            Screen.instance.LowEnergy();
             value = 0;
-            if (Board.current!=null) Application.LoadLevel(Application.loadedLevel);
+            if (Board.current != null) StartCoroutine(WaitAnyKayToLoad());
         }
-        else
-            currentEnergy = value;
+
+        currentEnergy = value;
 
         if (Application.loadedLevel == 1 && currentEnergy < 15)
             PlayerMessage.instance.Show("Awww. I should decrease energy spending by R_Mouse.");

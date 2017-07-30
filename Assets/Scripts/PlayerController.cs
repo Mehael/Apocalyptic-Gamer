@@ -83,10 +83,12 @@ public class PlayerController : MonoBehaviour {
     private static void Fall()
     {
         AudioSystem.instance.PlayFallToHole();
-        Application.LoadLevel(Application.loadedLevel);
+        RHandController.instance.LoadLevel(Application.loadedLevel);
     }
 
     void Update () {
+        if (Energy.instance.currentEnergy == 0) return;
+
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             MoveTo(coords + Vector2.down);
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))

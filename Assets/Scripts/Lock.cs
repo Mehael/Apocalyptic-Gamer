@@ -30,7 +30,7 @@ public class Lock : Tile {
             HardDoorsCounter.EasyDoors++;
         ConsoleMessage.instance.Show("Level " + (Application.loadedLevel + 1) + " saved");
         yield return new WaitForSeconds(2f);
-        Application.LoadLevel(Application.loadedLevel + 1);
+        RHandController.instance.LoadLevel(Application.loadedLevel + 1);
     }
 
     public void KeysCollected(int KeysStillOnLevel)

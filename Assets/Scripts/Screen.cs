@@ -29,6 +29,12 @@ public class Screen : MonoBehaviour {
             SetState(Power.full);
     }
 
+    public void LowEnergy()
+    {
+        SetState(Power.gray);
+        ConsoleMessage.instance.Show("Your batteries ran out.\n Change them.");
+    }
+
     private void SetState(Power newPower)
     {
         if ((newPower == Power.overcharge) || (newPower == Power.zerodivision)) return;

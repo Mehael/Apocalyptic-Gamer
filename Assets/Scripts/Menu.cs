@@ -60,16 +60,16 @@ public class Menu : MonoBehaviour {
 
     void Update () {
 #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.Keypad1)) Application.LoadLevel(1);
-        if (Input.GetKeyDown(KeyCode.Keypad2)) Application.LoadLevel(2);
-        if (Input.GetKeyDown(KeyCode.Keypad3)) Application.LoadLevel(3);
-        if (Input.GetKeyDown(KeyCode.Keypad4)) Application.LoadLevel(4);
-        if (Input.GetKeyDown(KeyCode.Keypad5)) Application.LoadLevel(5);
-        if (Input.GetKeyDown(KeyCode.Keypad6)) Application.LoadLevel(6);
-        if (Input.GetKeyDown(KeyCode.Keypad7)) Application.LoadLevel(7);
-        if (Input.GetKeyDown(KeyCode.Keypad8)) Application.LoadLevel(8);
-        if (Input.GetKeyDown(KeyCode.Keypad9)) Application.LoadLevel(9);
-        if (Input.GetKeyDown(KeyCode.Keypad0)) Application.LoadLevel(10);
+        if (Input.GetKeyDown(KeyCode.Keypad1)) RHandController.instance.LoadLevel(1);
+        if (Input.GetKeyDown(KeyCode.Keypad2)) RHandController.instance.LoadLevel(2);
+        if (Input.GetKeyDown(KeyCode.Keypad3)) RHandController.instance.LoadLevel(3);
+        if (Input.GetKeyDown(KeyCode.Keypad4)) RHandController.instance.LoadLevel(4);
+        if (Input.GetKeyDown(KeyCode.Keypad5)) RHandController.instance.LoadLevel(5);
+        if (Input.GetKeyDown(KeyCode.Keypad6)) RHandController.instance.LoadLevel(6);
+        if (Input.GetKeyDown(KeyCode.Keypad7)) RHandController.instance.LoadLevel(7);
+        if (Input.GetKeyDown(KeyCode.Keypad8)) RHandController.instance.LoadLevel(8);
+        if (Input.GetKeyDown(KeyCode.Keypad9)) RHandController.instance.LoadLevel(9);
+        if (Input.GetKeyDown(KeyCode.Keypad0)) RHandController.instance.LoadLevel(10);
 
 #endif
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
@@ -79,8 +79,7 @@ public class Menu : MonoBehaviour {
         if (Input.GetMouseButtonDown(0) && selectedItem == 1)
         {
             PlayerMessage.instance.Hide();
-            Application.LoadLevel(1);
-
+            RHandController.instance.LoadLevel(1);
         }
 
     }
