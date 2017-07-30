@@ -46,7 +46,7 @@ public class Energy : MonoBehaviour {
     {
         energyLabel.gameObject.SetActive(true);
         if (Board.current == null)
-            SetEnergy(17);
+            SetEnergy(76);
         else
             SetEnergy(Board.current.StartEnergyForLevel);
     }
@@ -58,7 +58,8 @@ public class Energy : MonoBehaviour {
         {
             yield return null;
         }
-        RHandController.instance.LoadLevel(Application.loadedLevel);
+        if (currentEnergy == 0)
+            RHandController.instance.LoadLevel(Application.loadedLevel);
     }
 
     private void SetEnergy(int value)
