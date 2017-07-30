@@ -550,6 +550,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114073285562438384, guid: 6eec90e2b0b5d2642ab9379570d2a015,
+        type: 2}
+      propertyPath: WillOpenWhenXKeysStillOnLevel
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6eec90e2b0b5d2642ab9379570d2a015, type: 2}
   m_IsPrefabParent: 0
@@ -1502,7 +1507,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coords: {x: 0, y: 0}
   SlimedHP: 3
-  cooldownOfIdleEnergySpend: 3
 --- !u!1 &1992849250
 GameObject:
   m_ObjectHideFlags: 0
