@@ -6,9 +6,16 @@ public enum Power { zerodivision, none, gray, full, overcharge };
 public class Screen : MonoBehaviour {
     public Power startPower = Power.full;
     public static Screen instance;
+
+    public Transform OffMarker;
+    public Transform OnMarker;
+    public Transform GrayMarker;
+
+    public Transform CurrentMarker;
+    public GameObject glow;
+
     private Power currentPower;
     public Transform offedScreen;
-    public Text ScreenState;
 
     private void Awake()
     {
@@ -31,13 +38,15 @@ public class Screen : MonoBehaviour {
 
         if (currentPower == Power.none)
         {
+            glow.SetActive(false);
             offedScreen.gameObject.SetActive(true);
-            ScreenState.text = "OFF";
+            CurrentMarker.position = OffMarker.position;
             return;
         }
 
         if (offedScreen == null) return;
 
+        glow.SetActive(true);
         offedScreen.gameObject.SetActive(false);
 
         if (currentPower == Power.gray)
@@ -53,7 +62,7 @@ public class Screen : MonoBehaviour {
                 foreach (var tile in Board.current.items.Values)
                     tile.GrayTint();
             }
-            ScreenState.text = "GRAY";
+            CurrentMarker.position = GrayMarker.position;
         }
         else
         {
@@ -68,7 +77,7 @@ public class Screen : MonoBehaviour {
                 foreach (var tile in Board.current.items.Values)
                     tile.ColorTint();
             }
-            ScreenState.text = "COLOR";
+            CurrentMarker.position = OnMarker.position;
         }
     }
 
