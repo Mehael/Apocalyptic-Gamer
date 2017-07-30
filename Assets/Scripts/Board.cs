@@ -40,6 +40,11 @@ public class Board : MonoBehaviour {
         Screen.instance.Start();
     }
 
+    private void Start()
+    {
+        ConsoleMessage.instance.Show("Level " + Application.loadedLevel + " loaded");
+    }
+
     public int KeysHere = 0;
 
     public void GetKey()

@@ -35,6 +35,9 @@ public class Screen : MonoBehaviour {
             ScreenState.text = "OFF";
             return;
         }
+
+        if (offedScreen == null) return;
+
         offedScreen.gameObject.SetActive(false);
 
         if (currentPower == Power.gray)

@@ -58,6 +58,9 @@ public class Energy : MonoBehaviour {
         else
             currentEnergy = value;
 
+        if (Application.loadedLevel == 1 && currentEnergy < 15)
+            PlayerMessage.instance.Show("Awww. I should decrease energy spending by R_Mouse.");
+
         energyLabel.text = currentEnergy.ToString();
     }
 
