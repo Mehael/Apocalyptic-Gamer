@@ -28,7 +28,7 @@ public class Lock : Tile {
             HardDoorsCounter.HardDoors++;
         else
             HardDoorsCounter.EasyDoors++;
-        ConsoleMessage.instance.Show("Level " + (Application.loadedLevel + 1) + " saved");
+        ConsoleMessage.instance.Show("Level " + (Application.loadedLevel + 1) + " Saved");
         yield return new WaitForSeconds(2f);
         RHandController.instance.LoadLevel(Application.loadedLevel + 1);
     }

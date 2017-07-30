@@ -32,7 +32,7 @@ public class Screen : MonoBehaviour {
     public void LowEnergy()
     {
         SetState(Power.gray);
-        ConsoleMessage.instance.Show("Your batteries ran out.\n Change them.");
+        ConsoleMessage.instance.Show("Low batteries");
     }
 
     private void SetState(Power newPower)

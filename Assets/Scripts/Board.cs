@@ -42,7 +42,7 @@ public class Board : MonoBehaviour {
 
     private void Start()
     {
-        ConsoleMessage.instance.Show("Level " + Application.loadedLevel + " loaded");
+        ConsoleMessage.instance.Show("Level " + Application.loadedLevel + " Loaded");
     }
 
     public int KeysHere = 0;
