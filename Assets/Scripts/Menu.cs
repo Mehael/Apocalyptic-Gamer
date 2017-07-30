@@ -59,6 +59,19 @@ public class Menu : MonoBehaviour {
     }
 
     void Update () {
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Keypad1)) Application.LoadLevel(1);
+        if (Input.GetKeyDown(KeyCode.Keypad2)) Application.LoadLevel(2);
+        if (Input.GetKeyDown(KeyCode.Keypad3)) Application.LoadLevel(3);
+        if (Input.GetKeyDown(KeyCode.Keypad4)) Application.LoadLevel(4);
+        if (Input.GetKeyDown(KeyCode.Keypad5)) Application.LoadLevel(5);
+        if (Input.GetKeyDown(KeyCode.Keypad6)) Application.LoadLevel(6);
+        if (Input.GetKeyDown(KeyCode.Keypad7)) Application.LoadLevel(7);
+        if (Input.GetKeyDown(KeyCode.Keypad8)) Application.LoadLevel(8);
+        if (Input.GetKeyDown(KeyCode.Keypad9)) Application.LoadLevel(9);
+        if (Input.GetKeyDown(KeyCode.Keypad0)) Application.LoadLevel(10);
+
+#endif
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             SelectOption(selectedItem + 1);
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
