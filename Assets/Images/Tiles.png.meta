@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: d12697faca7a41f4a85a343f02779eaa
-timeCreated: 1501485296
+timeCreated: 1501488327
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -24,6 +24,7 @@ TextureImporter:
     21300034: ClosedDoor
     21300036: DarkChar
     21300038: NotSoWeak
+    21300040: buble
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -190,7 +191,7 @@ TextureImporter:
       name: Character
       rect:
         serializedVersion: 2
-        x: 39
+        x: 40
         y: 20
         width: 11
         height: 17
@@ -358,7 +359,7 @@ TextureImporter:
       name: DarkChar
       rect:
         serializedVersion: 2
-        x: 50
+        x: 52
         y: 20
         width: 11
         height: 17
@@ -379,6 +380,20 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buble
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 55
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 4, z: 4, w: 4}
       outline: []
       physicsShape: []
       tessellationDetail: 0
