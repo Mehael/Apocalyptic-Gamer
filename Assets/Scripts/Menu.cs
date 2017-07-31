@@ -38,7 +38,7 @@ public class Menu : MonoBehaviour {
         PlayerMessage.instance.Show("Change option by WASD or Arrows.", true);
     }
 
-    private void SelectOption(int v, bool isNatural = false)
+    virtual public void SelectOption(int v, bool isNatural = false)
     {
         if (isNatural) AudioSystem.instance.PlayFloorStep();
 

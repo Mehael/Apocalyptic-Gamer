@@ -41,10 +41,10 @@ public class Lock : Tile {
 
     public IEnumerator WaitToChangeLevel()
     {
-        if (WillOpenWhenXKeysStillOnLevel == 0)
-            HardDoorsCounter.HardDoors++;
-        else
-            HardDoorsCounter.EasyDoors++;
+        
+        HardDoorsCounter.KeysAtAll += Board.current.KeysHere + KeysCOllected;
+        HardDoorsCounter.KeysCollected += KeysCOllected;
+
         ConsoleMessage.instance.Show("Level " + (Application.loadedLevel + 1) + " Saved");
         if (Application.loadedLevel == 1)
             PlayerMessage.instance.Show("EASY");
@@ -54,8 +54,10 @@ public class Lock : Tile {
         RHandController.instance.LoadLevel(Application.loadedLevel + 1);
     }
 
+    int KeysCOllected = 0;
     public void KeysCollected(int KeysStillOnLevel)
     {
+        KeysCOllected++;
         if (KeysStillOnLevel <= WillOpenWhenXKeysStillOnLevel)
             lockGo.gameObject.SetActive(false);
     }

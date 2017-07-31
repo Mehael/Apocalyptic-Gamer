@@ -1,4 +1,4 @@
 ﻿public static class HardDoorsCounter {
-    public static int HardDoors = 0;
-    public static int EasyDoors = 0;
+    public static int KeysAtAll = 0;
+    public static int KeysCollected = 0;
 }
