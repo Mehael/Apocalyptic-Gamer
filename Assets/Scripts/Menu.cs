@@ -44,7 +44,7 @@ public class Menu : MonoBehaviour {
         if (v > buttons.Count - 1) v = buttons.Count - 1;
 
         if (v == 1 && Screen.instance.IsColor())
-            PlayerMessage.instance.Show("Great. I can choose menu option by L_Mouse.", true);
+            PlayerMessage.instance.Show("Great. I can select menu option by L_Mouse.", true);
 
         Selector.position = buttons[v].transform.position;
         selectedItem = v;

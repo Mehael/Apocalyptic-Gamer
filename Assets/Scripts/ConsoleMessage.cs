@@ -7,7 +7,7 @@ public class ConsoleMessage : MonoBehaviour {
     public static ConsoleMessage instance;
     public Text text;
     public Transform messagePanel;
-    public float showTime = 2f;
+    public float showTime = 1.5f;
     float timeToHide = 0f;
     bool isActive = false;
 

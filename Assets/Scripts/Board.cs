@@ -38,11 +38,14 @@ public class Board : MonoBehaviour {
 
         Energy.instance.Start();
         Screen.instance.Start();
+        PlayerMessage.instance.Hide();
     }
 
     private void Start()
     {
         ConsoleMessage.instance.Show("Level " + Application.loadedLevel + " Loaded");
+        if (Application.loadedLevel == 1)
+            PlayerMessage.instance.Show("YES, It works with new batteries!");
     }
 
     public int KeysHere = 0;

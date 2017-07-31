@@ -7,8 +7,6 @@ public class PlayerMessage : MonoBehaviour {
     public static PlayerMessage instance;
     public Text text;
     public Transform messagePanel;
-    public float showTime = 3f;
-    float timeToHide = 0f;
     bool isActive = false;
 
     public void Awake()
@@ -23,7 +21,12 @@ public class PlayerMessage : MonoBehaviour {
 
         if (dontHide) return;
 
-        timeToHide = showTime;
+        StartCoroutine(WaitAndActive());
+    }
+
+    IEnumerator WaitAndActive()
+    {
+        yield return new WaitForSeconds(0.5f);
         isActive = true;
     }
 
@@ -37,9 +40,7 @@ public class PlayerMessage : MonoBehaviour {
     {
         if (isActive == false) return;
 
-        if (timeToHide > 0)
-            timeToHide -= Time.deltaTime;
-        else
+        if (Input.anyKey)
         {
             messagePanel.gameObject.SetActive(false);
             isActive = false;

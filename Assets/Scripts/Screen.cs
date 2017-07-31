@@ -45,6 +45,9 @@ public class Screen : MonoBehaviour {
 
         if (currentPower == Power.none)
         {
+            if (Application.loadedLevel == 1)
+                PlayerMessage.instance.Show("I CAN pass it without a screen!");
+
             glow.SetActive(false);
             offedScreen.gameObject.SetActive(true);
             CurrentMarker.position = OffMarker.position;
