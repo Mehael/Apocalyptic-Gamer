@@ -15,6 +15,9 @@ public class Final : Menu {
 
     bool isBEST = false;
     void Start () {
+        Energy.instance.Start();
+        Screen.instance.Start();
+
         PlayerMessage.instance.Show("I DID IT! Yeeeeas!", true);
         KeysLabel.text = "Keys:" + HardDoorsCounter.KeysCollected + 
             "\\" + HardDoorsCounter.KeysAtAll;
@@ -40,7 +43,7 @@ public class Final : Menu {
 
     }
 
-    public new void Gray()
+    public override void Gray()
     {
         bestBody.SetActive(false);
         notBestBody.SetActive(false);
@@ -49,12 +52,12 @@ public class Final : Menu {
             i.SetActive(false);
     }
 
-    public new void Color()
+    public override void Color()
     {
         if (isBEST)
             bestBody.SetActive(true);
         else
-            notBestBody.SetActive(false);
+            notBestBody.SetActive(true);
 
         foreach (var i in coloredParts)
             i.SetActive(true);

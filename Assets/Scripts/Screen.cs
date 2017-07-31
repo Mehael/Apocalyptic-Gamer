@@ -24,7 +24,7 @@ public class Screen : MonoBehaviour {
     }
 
     public void Start() {
-        if (Board.current == null)
+        if (Application.loadedLevel == 0)
             SetState(Power.none, true);
         else
             SetState(Power.full, true);

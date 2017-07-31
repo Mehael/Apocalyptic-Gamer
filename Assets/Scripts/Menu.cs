@@ -21,7 +21,7 @@ public class Menu : MonoBehaviour {
         PlayerMessage.instance.Show("I need to switch on the screen by L_Mouse.", true);
 	}
 
-    public void Gray()
+    public virtual void Gray()
     {
         foreach (var i in coloredParts)
             i.SetActive(false);
@@ -29,7 +29,7 @@ public class Menu : MonoBehaviour {
         PlayerMessage.instance.Show("Hm. I need to increase energy spending by L_Mouse.", true);
     }
 
-    public void Color()
+    public virtual void Color()
     {
         foreach (var i in coloredParts)
             i.SetActive(true);
