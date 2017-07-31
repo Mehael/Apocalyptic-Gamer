@@ -64,6 +64,7 @@ public class Screen : MonoBehaviour {
             }
             else
             {
+                PlayerController.instance.Gray();
                 foreach (var tile in Board.current.cells.Values)
                     tile.GrayTint();
                 foreach (var tile in Board.current.items.Values)
@@ -79,6 +80,7 @@ public class Screen : MonoBehaviour {
             }
             else
             {
+                PlayerController.instance.Color();
                 foreach (var tile in Board.current.cells.Values)
                     tile.ColorTint();
                 foreach (var tile in Board.current.items.Values)

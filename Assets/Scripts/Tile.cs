@@ -1,10 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Tile : MonoBehaviour {
     public GameObject LightPart;
-    protected SpriteRenderer sprite;
+    SpriteRenderer sprite;
+    private void Awake()
+    {
+        sprite = GetComponent<SpriteRenderer>();
+    }
 
     virtual public void GrayTint()
     {
@@ -44,5 +49,20 @@ public class Tile : MonoBehaviour {
     virtual public bool StayOneMoreTurn()
     {
         return false;
+    }
+
+    internal void HideForSecond()
+    {
+        StartCoroutine(Hider());
+    }
+
+    IEnumerator Hider()
+    {
+        sprite.enabled = false;
+        LightPart.SetActive(false);
+
+        yield return new WaitForSeconds(0.5f);
+        sprite.enabled = true;
+        if (Screen.instance.IsColor()) LightPart.SetActive(true);
     }
 }

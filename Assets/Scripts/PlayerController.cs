@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     private Board board;
     public Vector2 coords;
     public static PlayerController instance;
+    public GameObject LightCharacter;
 
     private void Awake()
     {
@@ -27,6 +28,16 @@ public class PlayerController : MonoBehaviour {
         MoveTo(board.enterPoint);
 	}
 
+    public void Color()
+    {
+        LightCharacter.SetActive(true);
+    }
+
+    public void Gray()
+    {
+        LightCharacter.SetActive(false);
+    }
+
     private void MoveTo(Vector2 enterPoint)
     {
         Energy.instance.Move();
@@ -36,7 +47,9 @@ public class PlayerController : MonoBehaviour {
             SlimedHPCounter--;
             Instantiate<GameObject>(Slime.gameObject,
                 new Vector3(enterPoint.x + 0.5f, enterPoint.y + 0.5f, Slime.transform.position.z),
-                Quaternion.identity).AddComponent<DieAfterSecond>();
+                Quaternion.identity, Slime.transform.parent).AddComponent<DieAfterSecond>();
+
+            Slime.HideForSecond();
 
             if (SlimedHPCounter < 1 || !Slime.SlimeStillLiveAfterThrow(enterPoint))
             {

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: d12697faca7a41f4a85a343f02779eaa
-timeCreated: 1501481643
+timeCreated: 1501483476
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -22,6 +22,7 @@ TextureImporter:
     21300030: DarkClosedHole
     21300032: DarkSlime
     21300034: ClosedDoor
+    21300036: DarkChar
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -175,7 +176,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 39
-        y: 11
+        y: 10
         width: 11
         height: 9
       alignment: 0
@@ -346,6 +347,20 @@ TextureImporter:
         y: 39
         width: 7
         height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DarkChar
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 20
+        width: 11
+        height: 17
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
