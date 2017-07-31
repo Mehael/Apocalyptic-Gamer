@@ -41,7 +41,7 @@ public class Tile : MonoBehaviour {
     public void Die()
     {
         tag = "Floor";
-        sprite.enabled = false;
+        gameObject.SetActive(false);
     }
 
     virtual public bool StayOneMoreTurn()

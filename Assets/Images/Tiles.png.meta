@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: d12697faca7a41f4a85a343f02779eaa
-timeCreated: 1501475609
+timeCreated: 1501480711
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -132,8 +132,8 @@ TextureImporter:
       name: Key
       rect:
         serializedVersion: 2
-        x: 1
-        y: 1
+        x: 0
+        y: 0
         width: 11
         height: 7
       alignment: 0
@@ -203,7 +203,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 29
+        y: 49
         width: 7
         height: 8
       alignment: 0
@@ -347,7 +347,7 @@ TextureImporter:
         width: 7
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
