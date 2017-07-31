@@ -21,7 +21,7 @@ public class Tile : MonoBehaviour {
         if (tag == "Slime" && isPlayer)
             PlayerController.instance.BecomeSlimed(this);
 
-        if (tag == "Weak" || tag == "Trap")
+        if (tag == "Trap")
             return true;
 
         return false;
@@ -46,12 +46,6 @@ public class Tile : MonoBehaviour {
 
     virtual public bool StayOneMoreTurn()
     {
-        if (tag == "Weak")
-        {
-            tag = "Death";
-            sprite.enabled = false;
-        }
-
         return false;
     }
 }

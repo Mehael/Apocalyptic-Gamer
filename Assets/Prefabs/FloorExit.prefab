@@ -106,7 +106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1897254702031560
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 4831818782275846}
   - component: {fileID: 212412089288822480}
   - component: {fileID: 114073285562438384}
+  - component: {fileID: 114732064902198258}
   m_Layer: 0
   m_Name: FloorExit
   m_TagString: Exit
@@ -198,7 +199,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1897254702031560}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.52, y: 0.51, z: 0}
+  m_LocalPosition: {x: 3.5, y: -0.5, z: -0.1}
   m_LocalScale: {x: 0.07, y: 0.07, z: 1}
   m_Children:
   - {fileID: 4010908719906084}
@@ -236,6 +237,17 @@ MonoBehaviour:
   lockGo: {fileID: 4048471409373226}
   lockLight: {fileID: 1882069831631098}
   WillOpenWhenXKeysStillOnLevel: 0
+--- !u!114 &114732064902198258
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1897254702031560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2725eca67e7fe7845a9e4bfb826574cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212052746553468894
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour {
             return;
         }
 
-        transform.position = new Vector3(enterPoint.x + 0.5f, enterPoint.y + 0.5f, (coords.y / 10) - 0.09f);
+        transform.position = new Vector3(enterPoint.x + 0.5f, enterPoint.y + 0.5f, (enterPoint.y / 10) - 0.09f);
         coords = enterPoint;
 
         if (nextTile.tag == "Trap")
