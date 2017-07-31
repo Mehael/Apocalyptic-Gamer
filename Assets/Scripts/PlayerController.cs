@@ -66,13 +66,13 @@ public class PlayerController : MonoBehaviour {
             StartCoroutine(Fall(true));
 
         if (nextTile.tag == "Unpassable")
+        {
             if (board.cells[coords].tag == "Death")
-            {
                 StartCoroutine(Fall());
-                return;
-            }
             else
                 AudioSystem.instance.PlayWallStuck();
+            return;
+        }
 
         coords = enterPoint;
         MoveHeroSprite(enterPoint);
