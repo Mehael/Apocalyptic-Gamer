@@ -25,9 +25,9 @@ public class Screen : MonoBehaviour {
 
     public void Start() {
         if (Board.current == null)
-            SetState(Power.none);
+            SetState(Power.none, true);
         else
-            SetState(Power.full);
+            SetState(Power.full, true);
     }
 
     public void LowEnergy()
@@ -36,12 +36,12 @@ public class Screen : MonoBehaviour {
         ConsoleMessage.instance.Show("Low batteries");
     }
 
-    private void SetState(Power newPower)
+    private void SetState(Power newPower, bool isInit = false)
     {
         if ((newPower == Power.overcharge) || (newPower == Power.zerodivision)) return;
 
         currentPower = newPower;
-        Energy.instance.SetPowerState(currentPower);
+        Energy.instance.SetPowerState(currentPower, isInit);
 
         if (currentPower == Power.none)
         {

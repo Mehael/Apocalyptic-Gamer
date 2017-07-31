@@ -2634,6 +2634,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentEnergy: 0
   energyLabel: {fileID: 1577034104}
+  deltaPrefab: {fileID: 114621985306692050, guid: fea37d9b7759ee444911d2be0e86792a,
+    type: 2}
   switchOnColorModeCost: 20
   switchOnGrayModeCost: 10
   moveWithoutScreenCost: 1

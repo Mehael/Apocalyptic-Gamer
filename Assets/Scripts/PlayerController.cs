@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour {
 
     void Start () {
         board = Board.current;
-        MoveTo(board.enterPoint);
+        MoveTo(board.enterPoint, true);
 	}
 
     public void Color()
@@ -38,9 +38,9 @@ public class PlayerController : MonoBehaviour {
         LightCharacter.SetActive(false);
     }
 
-    private void MoveTo(Vector2 enterPoint)
+    private void MoveTo(Vector2 enterPoint, bool isInit = false)
     {
-        Energy.instance.Move();
+        if (isInit == false) Energy.instance.Move();
 
         if (SlimedHPCounter > 0)
         {

@@ -8,6 +8,7 @@ public class Energy : MonoBehaviour {
     public int currentEnergy;
     public Text energyLabel;
     public static Energy instance;
+    public Text deltaPrefab;
 
     public int switchOnColorModeCost = 1;
     public int switchOnGrayModeCost = 1;
@@ -21,10 +22,12 @@ public class Energy : MonoBehaviour {
         instance = this;
     }
 
-    public void SetPowerState(Power newState)
+    public void SetPowerState(Power newState, bool IsInit = false)
     {
         if (energState != Power.zerodivision && energState == newState) return;
             energState = newState;
+
+        if (IsInit) return;
 
         if (energState == Power.gray)
             RemoveEnergy(moveWithGrayModeCost);
@@ -81,6 +84,9 @@ public class Energy : MonoBehaviour {
 
     public void RemoveEnergy(int delta)
     {
+        Instantiate<Text>(deltaPrefab, Vector3.back, Quaternion.identity, transform)
+            .text = "- "+ delta;
+
         SetEnergy(currentEnergy - delta);
     }
 }
