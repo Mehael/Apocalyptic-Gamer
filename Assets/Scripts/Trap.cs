@@ -10,7 +10,7 @@ public class Trap : Tile
 
    override public bool StayOneMoreTurn()
    {
-        if (tag == "Trap" && passiveTrapState.activeInHierarchy)
+        if (tag == "Trap")
         {
             tag = "Death";
             TurnsToBecomePassive = 2;
