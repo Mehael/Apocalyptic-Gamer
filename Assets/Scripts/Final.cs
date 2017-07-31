@@ -18,6 +18,8 @@ public class Final : Menu {
         Energy.instance.Start();
         Screen.instance.Start();
 
+        RHandController.instance.Like();
+
         PlayerMessage.instance.Show("I DID IT! Yeeeeas!", true);
         KeysLabel.text = "Keys:" + HardDoorsCounter.KeysCollected + 
             "\\" + HardDoorsCounter.KeysAtAll;

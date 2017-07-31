@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +21,11 @@ public class RHandController : MonoBehaviour {
     public void ButtaryReset()
     {
         anim.SetTrigger("Battary");
+    }
+
+    internal void Like()
+    {
+        anim.SetTrigger("Like");
     }
 
     public void ResTime()
