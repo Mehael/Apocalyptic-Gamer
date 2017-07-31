@@ -9,9 +9,32 @@ public class AudioSystem : MonoBehaviour {
     public AudioSource TrapStep;
     public AudioSource FloorStep;
 
+    AudioSource loop;
     private void Awake()
     {
+        loop = GetComponent<AudioSource>();
         instance = this;
+    }
+
+    bool isActivated = false;
+    public void Gray()
+    {
+        if (isActivated == false)
+        {
+            loop.Play();
+            isActivated = true;
+        }
+        loop.volume = 0.08f;
+    }
+
+    public void Color()
+    {
+        loop.volume = 0.16f;
+    }
+
+    public void None()
+    {
+        loop.volume = 0f;
     }
 
     public void PlayWallStuck()
@@ -80,18 +103,21 @@ public class AudioSystem : MonoBehaviour {
     public void PlayBLIND()
     {
         BLIND.Play();
+        None();
     }
 
     public AudioSource COLOR;
     public void PlayCOLOR()
     {
         COLOR.Play();
+        Color();
     }
 
     public AudioSource GRAY;
     public void PlayGRAY()
     {
         GRAY.Play();
+        Gray();
     }
 
     public AudioSource WeakFL;

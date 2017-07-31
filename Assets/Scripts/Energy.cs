@@ -61,6 +61,9 @@ public class Energy : MonoBehaviour {
         {
             yield return null;
         }
+        yield return new WaitForSeconds(0.5f);
+        Screen.instance.NoEnergy();
+
         if (currentEnergy == 0)
             RHandController.instance.LoadLevel(Application.loadedLevel);
     }

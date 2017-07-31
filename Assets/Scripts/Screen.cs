@@ -58,6 +58,11 @@ public class Screen : MonoBehaviour
         ConsoleMessage.instance.Show("Low batteries");
     }
 
+    public void NoEnergy()
+    {
+        SetState(Power.none);
+    }
+
     private void SetState(Power newPower, bool isInit = false)
     {
         if ((newPower == Power.overcharge) || (newPower == Power.zerodivision)) return;
