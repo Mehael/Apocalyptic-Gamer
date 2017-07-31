@@ -43,7 +43,7 @@ public class Board : MonoBehaviour {
 
     private void Start()
     {
-        ConsoleMessage.instance.Show("Level " + Application.loadedLevel + " Loaded");
+        ConsoleMessage.instance.Show("Level " + Application.loadedLevel + " Loaded", true);
         if (Application.loadedLevel == 1)
             PlayerMessage.instance.Show("YES, It works with new batteries!");
     }

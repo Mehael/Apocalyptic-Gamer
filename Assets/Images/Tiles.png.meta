@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: d12697faca7a41f4a85a343f02779eaa
-timeCreated: 1501488327
+timeCreated: 1501504413
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -25,6 +25,8 @@ TextureImporter:
     21300036: DarkChar
     21300038: NotSoWeak
     21300040: buble
+    21300042: darkOrb
+    21300044: LightOrb
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -384,16 +386,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: buble
+      name: darkOrb
       rect:
         serializedVersion: 2
         x: 0
-        y: 55
-        width: 9
-        height: 9
+        y: 58
+        width: 6
+        height: 6
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 4, y: 4, z: 4, w: 4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LightOrb
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 53
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
