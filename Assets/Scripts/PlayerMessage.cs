@@ -14,6 +14,12 @@ public class PlayerMessage : MonoBehaviour {
         instance = this;
     }
 
+    public void Show(List<string> inputList)
+    {
+        if (Random.Range(0, 10) > 1) return;
+        Show(inputList[Random.Range(0, inputList.Count - 1)]);
+    }
+
     public void Show(string message, bool dontHide = false)
     {
         messagePanel.gameObject.SetActive(true);

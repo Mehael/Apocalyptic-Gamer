@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public enum Power { zerodivision, none, gray, full, overcharge };
 
-public class Screen : MonoBehaviour {
+public class Screen : MonoBehaviour
+{
     public Power startPower = Power.full;
     public static Screen instance;
 
@@ -23,7 +25,27 @@ public class Screen : MonoBehaviour {
         instance = this;
     }
 
-    public void Start() {
+    List<String> BlindMessages = new List<string>()
+    {
+        "I can't see a shit!",
+        "Where the hell am I?",
+        "Damn this dark corridors",
+        "Oh, I see, I see... Nothing =(",
+    };
+
+    List<String> ColorMessages = new List<string>()
+    {
+        "Hooray! I see again"
+    };
+
+    List<String> GrayMessages = new List<string>()
+    {
+        "Where are obstacles now?",
+        "Everything is gray...Nice",
+    };
+
+    public void Start()
+    {
         if (Application.loadedLevel == 0)
             SetState(Power.none, true);
         else
@@ -49,6 +71,8 @@ public class Screen : MonoBehaviour {
 
             if (Application.loadedLevel == 1)
                 PlayerMessage.instance.Show("I CAN pass it without a screen!");
+            else
+                PlayerMessage.instance.Show(BlindMessages);
 
             glow.SetActive(false);
             offedScreen.gameObject.SetActive(true);
@@ -63,6 +87,9 @@ public class Screen : MonoBehaviour {
 
         if (currentPower == Power.gray)
         {
+            if (Application.loadedLevel > 1)
+                PlayerMessage.instance.Show(GrayMessages);
+
             AudioSystem.instance.PlayGRAY();
             if (Board.current == null)
             {
@@ -80,6 +107,9 @@ public class Screen : MonoBehaviour {
         }
         else
         {
+            if (Application.loadedLevel > 1)
+                PlayerMessage.instance.Show(ColorMessages);
+
             AudioSystem.instance.PlayCOLOR();
             if (Board.current == null)
             {
@@ -102,7 +132,8 @@ public class Screen : MonoBehaviour {
         return currentPower == Power.full;
     }
 
-    void Update() {
+    void Update()
+    {
         if (Input.GetKeyDown(KeyCode.Minus) || Input.GetKeyDown(KeyCode.KeypadMinus) || Input.GetMouseButtonDown(1))
             SetState(currentPower - 1);
         if (Input.GetKeyDown(KeyCode.Plus) || Input.GetKeyDown(KeyCode.KeypadPlus) || Input.GetMouseButtonDown(0))

@@ -27,15 +27,24 @@ public class Lock : Tile {
 
     public int WillOpenWhenXKeysStillOnLevel = 0;
 
+    public static bool isFirst = false;
     public override bool PressedSignUp(bool isPlayer = true)
     {
+
         if (!lockGo.gameObject.activeInHierarchy)
         {
             StartCoroutine(WaitToChangeLevel());
             AudioSystem.instance.PlayDoorOpen();
         }
-        AudioSystem.instance.PlayDoorLocked();
-
+        else
+        {
+            if (isFirst == true)
+            {
+                PlayerMessage.instance.Show("This key must be from the door");
+                isFirst = false;
+            }
+            AudioSystem.instance.PlayDoorLocked();
+        }
         return false;
     }
 

@@ -17,11 +17,28 @@ public class PlayerController : MonoBehaviour {
     private int SlimedHPCounter = 0;
     private Tile Slime;
     public int SlimedHP = 2;
+
+    List<String> slimedMEssgaes = new List<string>()
+    {
+        "Oh great! My character is covered in slime.",
+        "Oh, I don't want to touch it!",
+        "Taste my kick!",
+    };
+
+    List<String> trapMEssgaes = new List<string>()
+    {
+        "Ouch, thay are sharp",
+        "Every game about the dungeon has spikes. VERY smart.",
+        "I assume, It's a bad idea to step on it",
+    };
+
     public void BecomeSlimed(Tile slime)
     {
         AudioSystem.instance.PlaySlime();
         SlimedHPCounter = SlimedHP;
         Slime = slime;
+
+        PlayerMessage.instance.Show(slimedMEssgaes);
     }
 
     void Start () {
@@ -83,6 +100,7 @@ public class PlayerController : MonoBehaviour {
 
         if (nextTile.tag == "Unpassable")
         {
+            PlayerMessage.instance.Show(WallMEssages);
             if (board.cells[coords].tag == "Death")
                 StartCoroutine(Fall());
             else
@@ -94,7 +112,10 @@ public class PlayerController : MonoBehaviour {
         MoveHeroSprite(enterPoint);
 
         if (nextTile.tag == "Trap")
+        {
             AudioSystem.instance.PlayTrapStep();
+            PlayerMessage.instance.Show(trapMEssgaes);
+        }
         else if (nextTile.tag == "Exit")
             return;
         else if (nextTile.tag == "Key")
@@ -112,6 +133,25 @@ public class PlayerController : MonoBehaviour {
         transform.position = new Vector3(enterPoint.x + 0.5f, enterPoint.y + 0.5f, (enterPoint.y / 10) - 0.09f);
     }
 
+    List<String> WallMEssages = new List<string>()
+    {
+        "Stop hit this wall",
+        "You won't break it",
+        "Ouch",
+    };
+
+    List<String> DeatchMEssages = new List<string>()
+    {
+        "Who made this game? I'm sweating my ass off!",
+        "Not Again!",
+        "Are you kidding me?",
+        "No Way.",
+        "WHYYYY?",
+        "Well, It's not even frustrating anymore.",
+        "Well Done, I'm DEAD.",
+        "I didn't see that coming.",
+    };
+
     private IEnumerator Fall(bool isTrapDie = false)
     {
         if (isTrapDie)
@@ -120,6 +160,7 @@ public class PlayerController : MonoBehaviour {
             ConsoleMessage.instance.Show("You fall to hole");
 
         AudioSystem.instance.PlayFallToHole();
+        PlayerMessage.instance.Show(DeatchMEssages);
 
         yield return new WaitForSeconds(1.5f);
         RHandController.instance.LoadLevel(Application.loadedLevel);
