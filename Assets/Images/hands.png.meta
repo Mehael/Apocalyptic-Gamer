@@ -1,13 +1,13 @@
 fileFormatVersion: 2
 guid: 52a3afb34d390404db3f8576098e335a
-timeCreated: 1501403957
+timeCreated: 1501496529
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: hands_0
     21300002: hands_1
     21300004: hands_2
-    21300006: hands_3
+    21300006: Like
     21300008: hands_6
     21300010: hands_7
   serializedVersion: 4
@@ -154,6 +154,20 @@ TextureImporter:
         height: 148
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Like
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 0
+        width: 224
+        height: 308
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
