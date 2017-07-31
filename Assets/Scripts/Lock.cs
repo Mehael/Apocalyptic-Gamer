@@ -4,12 +4,25 @@ using UnityEngine;
 
 public class Lock : Tile {
     public Transform lockGo;
+    public GameObject lockLight;
 
     void Start () {
         if (Board.current.KeysHere > WillOpenWhenXKeysStillOnLevel)
             lockGo.gameObject.SetActive(true);
         else
             lockGo.gameObject.SetActive(false);
+    }
+
+    public override void ColorTint()
+    {
+        lockLight.SetActive(true);
+        base.ColorTint();
+    }
+
+    public override void GrayTint()
+    {
+        lockLight.SetActive(false);
+        base.GrayTint();
     }
 
     public int WillOpenWhenXKeysStillOnLevel = 0;

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public enum Power { zerodivision, none, gray, full, overcharge };
@@ -85,6 +86,11 @@ public class Screen : MonoBehaviour {
             }
             CurrentMarker.position = OnMarker.position;
         }
+    }
+
+    internal bool IsColor()
+    {
+        return currentPower == Power.full;
     }
 
     void Update() {

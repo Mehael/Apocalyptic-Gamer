@@ -3,22 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Tile : MonoBehaviour {
-    private Color startColor;
+    public GameObject LightPart;
     protected SpriteRenderer sprite;
 
-    void Awake () {
-        sprite = GetComponent<SpriteRenderer>();
-        startColor = sprite.color;
-	}
-	
-    public void GrayTint()
+    virtual public void GrayTint()
     {
-        sprite.color = Color.white;
+        LightPart.SetActive(false);
     }
 
-    public void ColorTint()
+    virtual public void ColorTint()
     {
-        sprite.color = startColor;
+        LightPart.SetActive(true);
     }
 
     public virtual bool PressedSignUp(bool isPlayer = true)
