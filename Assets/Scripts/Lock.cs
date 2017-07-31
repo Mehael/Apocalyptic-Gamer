@@ -30,7 +30,11 @@ public class Lock : Tile {
     public override bool PressedSignUp(bool isPlayer = true)
     {
         if (!lockGo.gameObject.activeInHierarchy)
+        {
             StartCoroutine(WaitToChangeLevel());
+            AudioSystem.instance.PlayDoorOpen();
+        }
+        AudioSystem.instance.PlayDoorLocked();
 
         return false;
     }

@@ -71,7 +71,10 @@ public class Energy : MonoBehaviour {
         {
             Screen.instance.LowEnergy();
             value = 0;
-            if (Board.current != null) StartCoroutine(WaitAnyKayToLoad());
+            if (Board.current != null)
+                StartCoroutine(WaitAnyKayToLoad());
+            else
+                value = 100;
         }
 
         currentEnergy = value;

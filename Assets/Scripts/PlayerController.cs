@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour {
     public int SlimedHP = 2;
     public void BecomeSlimed(Tile slime)
     {
+        AudioSystem.instance.PlaySlime();
         SlimedHPCounter = SlimedHP;
         Slime = slime;
     }
@@ -53,11 +54,13 @@ public class PlayerController : MonoBehaviour {
 
             if (SlimedHPCounter < 1 || !Slime.SlimeStillLiveAfterThrow(enterPoint))
             {
+                AudioSystem.instance.PlaySlimeDie();
                 Slime.Die();
                 SlimedHPCounter = 0;
             }
             else
             {
+                AudioSystem.instance.PlaySlime();
                 Board.current.TurnDone(enterPoint, false);
             }
 
@@ -89,11 +92,19 @@ public class PlayerController : MonoBehaviour {
 
         coords = enterPoint;
         MoveHeroSprite(enterPoint);
-        
+
         if (nextTile.tag == "Trap")
             AudioSystem.instance.PlayTrapStep();
+        else if (nextTile.tag == "Exit")
+            return;
+        else if (nextTile.tag == "Key")
+            AudioSystem.instance.PlayKey();
+        else if (nextTile.tag == "Weak")
+            AudioSystem.instance.PlayWeakFL();
         else
             AudioSystem.instance.PlayFloorStep();
+
+
     }
 
     private void MoveHeroSprite(Vector2 enterPoint)
@@ -104,13 +115,13 @@ public class PlayerController : MonoBehaviour {
     private IEnumerator Fall(bool isTrapDie = false)
     {
         if (isTrapDie)
-            ConsoleMessage.instance.Show("Trap kill you");
+            ConsoleMessage.instance.Show("Trap killed you");
         else
             ConsoleMessage.instance.Show("You fall to hole");
 
         AudioSystem.instance.PlayFallToHole();
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.5f);
         RHandController.instance.LoadLevel(Application.loadedLevel);
     }
 

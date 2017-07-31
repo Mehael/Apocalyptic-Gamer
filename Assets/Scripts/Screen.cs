@@ -45,6 +45,8 @@ public class Screen : MonoBehaviour {
 
         if (currentPower == Power.none)
         {
+            AudioSystem.instance.PlayBLIND();
+
             if (Application.loadedLevel == 1)
                 PlayerMessage.instance.Show("I CAN pass it without a screen!");
 
@@ -61,6 +63,7 @@ public class Screen : MonoBehaviour {
 
         if (currentPower == Power.gray)
         {
+            AudioSystem.instance.PlayGRAY();
             if (Board.current == null)
             {
                 Menu.instance.Gray();
@@ -77,6 +80,7 @@ public class Screen : MonoBehaviour {
         }
         else
         {
+            AudioSystem.instance.PlayCOLOR();
             if (Board.current == null)
             {
                 Menu.instance.Color();

@@ -12,6 +12,7 @@ public class Trap : Tile
    {
         if (tag == "Trap")
         {
+            AudioSystem.instance.PlayTrapUp();
             tag = "Death";
             TurnsToBecomePassive = 2;
             activeTrapState.SetActive(true);
@@ -24,6 +25,7 @@ public class Trap : Tile
             TurnsToBecomePassive--;
             if (TurnsToBecomePassive == 0)
             {
+                AudioSystem.instance.PlayTrapDown();
                 tag = "Trap";
                 activeTrapState.SetActive(false);
                 passiveTrapState.SetActive(true);

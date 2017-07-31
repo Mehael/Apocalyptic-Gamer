@@ -38,8 +38,10 @@ public class Menu : MonoBehaviour {
         PlayerMessage.instance.Show("Change option by WASD or Arrows.", true);
     }
 
-    private void SelectOption(int v)
+    private void SelectOption(int v, bool isNatural = false)
     {
+        if (isNatural) AudioSystem.instance.PlayFloorStep();
+
         if (v < 0) v = 0;
         if (v > buttons.Count - 1) v = buttons.Count - 1;
 
@@ -65,11 +67,12 @@ public class Menu : MonoBehaviour {
 
 #endif
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-            SelectOption(selectedItem + 1);
+            SelectOption(selectedItem + 1, true);
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-            SelectOption(selectedItem - 1);
+            SelectOption(selectedItem - 1, true);
         if (Input.GetMouseButtonDown(0) && selectedItem == 1 && Screen.instance.IsColor())
         {
+            AudioSystem.instance.PlayDoorOpen();
             PlayerMessage.instance.Hide();
             RHandController.instance.LoadLevel(1);
         }

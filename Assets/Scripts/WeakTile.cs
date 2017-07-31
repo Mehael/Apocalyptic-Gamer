@@ -14,6 +14,7 @@ public class WeakTile : Tile {
 
     public override bool StayOneMoreTurn()
     {
+        AudioSystem.instance.PlayWeakFall();
         tag = "Death";
         visualPart.SetActive(false);
 
