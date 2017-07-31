@@ -21,9 +21,6 @@ public class Tile : MonoBehaviour {
         if (tag == "Slime" && isPlayer)
             PlayerController.instance.BecomeSlimed(this);
 
-        if (tag == "Trap")
-            return true;
-
         return false;
     }
 

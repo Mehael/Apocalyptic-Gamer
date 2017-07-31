@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: d12697faca7a41f4a85a343f02779eaa
-timeCreated: 1501480711
+timeCreated: 1501481643
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -230,8 +230,8 @@ TextureImporter:
       name: SpikesOn
       rect:
         serializedVersion: 2
-        x: 15
-        y: 12
+        x: 40
+        y: 50
         width: 9
         height: 8
       alignment: 0
@@ -244,8 +244,8 @@ TextureImporter:
       name: SpikesOff
       rect:
         serializedVersion: 2
-        x: 15
-        y: 3
+        x: 40
+        y: 40
         width: 9
         height: 9
       alignment: 0

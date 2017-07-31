@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class Trap : Tile
 {
-    public Sprite activeTrapState;
-    public Sprite passiveTrapState;
+    public GameObject activeTrapState;
+    public GameObject passiveTrapState;
     public int TurnsToBecomePassive = 0;
 
    override public bool StayOneMoreTurn()
    {
-        if (tag == "Trap" && sprite.sprite == passiveTrapState)
+        if (tag == "Trap" && passiveTrapState.activeInHierarchy)
         {
             tag = "Death";
             TurnsToBecomePassive = 2;
-            sprite.sprite = activeTrapState;
+            activeTrapState.SetActive(true);
+            passiveTrapState.SetActive(false);
             return true;
         }
 
@@ -24,10 +25,19 @@ public class Trap : Tile
             if (TurnsToBecomePassive == 0)
             {
                 tag = "Trap";
-                sprite.sprite = passiveTrapState;
+                activeTrapState.SetActive(false);
+                passiveTrapState.SetActive(true);
             }
             else return true;
         }
+
+        return false;
+    }
+
+    public override bool PressedSignUp(bool isPlayer = true)
+    {
+        if (tag == "Trap")
+            return true;
 
         return false;
     }

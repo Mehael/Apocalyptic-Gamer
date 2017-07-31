@@ -31,18 +31,19 @@ public class PlayerController : MonoBehaviour {
     {
         Energy.instance.Move();
 
-        if (SlimedHPCounter>0)
+        if (SlimedHPCounter > 0)
         {
             SlimedHPCounter--;
             Instantiate<GameObject>(Slime.gameObject,
                 new Vector3(enterPoint.x + 0.5f, enterPoint.y + 0.5f, Slime.transform.position.z),
-                Quaternion.identity).AddComponent<DieAfterSecond>() ;
+                Quaternion.identity).AddComponent<DieAfterSecond>();
 
             if (SlimedHPCounter < 1 || !Slime.SlimeStillLiveAfterThrow(enterPoint))
             {
                 Slime.Die();
                 SlimedHPCounter = 0;
-            } else
+            }
+            else
             {
                 Board.current.TurnDone(enterPoint, false);
             }
@@ -54,35 +55,49 @@ public class PlayerController : MonoBehaviour {
 
         if (!board.cells.ContainsKey(enterPoint))
         {
-            Fall();
+            StartCoroutine(Fall());
+            MoveHeroSprite(enterPoint);
             return;
         }
 
         var nextTile = board.cells[enterPoint];
 
         if (nextTile.tag == "Death")
-            Fall();
+            StartCoroutine(Fall(true));
 
         if (nextTile.tag == "Unpassable")
-        {
-            AudioSystem.instance.PlayWallStuck();
             if (board.cells[coords].tag == "Death")
-                Fall();
-            return;
-        }
+            {
+                StartCoroutine(Fall());
+                return;
+            }
+            else
+                AudioSystem.instance.PlayWallStuck();
 
-        transform.position = new Vector3(enterPoint.x + 0.5f, enterPoint.y + 0.5f, (enterPoint.y / 10) - 0.09f);
         coords = enterPoint;
-
+        MoveHeroSprite(enterPoint);
+        
         if (nextTile.tag == "Trap")
             AudioSystem.instance.PlayTrapStep();
         else
             AudioSystem.instance.PlayFloorStep();
     }
 
-    private static void Fall()
+    private void MoveHeroSprite(Vector2 enterPoint)
     {
+        transform.position = new Vector3(enterPoint.x + 0.5f, enterPoint.y + 0.5f, (enterPoint.y / 10) - 0.09f);
+    }
+
+    private IEnumerator Fall(bool isTrapDie = false)
+    {
+        if (isTrapDie)
+            ConsoleMessage.instance.Show("Trap kill you");
+        else
+            ConsoleMessage.instance.Show("You fall to hole");
+
         AudioSystem.instance.PlayFallToHole();
+
+        yield return new WaitForSeconds(0.5f);
         RHandController.instance.LoadLevel(Application.loadedLevel);
     }
 
