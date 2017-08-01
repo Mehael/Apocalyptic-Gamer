@@ -60,7 +60,7 @@ public class Lock : Tile {
 
         yield return new WaitForSeconds(2f);
         
-        RHandController.instance.LoadLevel(Application.loadedLevel + 1);
+        BResetController.instance.PlayReset(Application.loadedLevel + 1);
     }
 
     int KeysCOllected = 0;

@@ -54,27 +54,28 @@ public class Menu : MonoBehaviour {
 
     void Update () {
 #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.Keypad1)) RHandController.instance.LoadLevel(1);
-        if (Input.GetKeyDown(KeyCode.Keypad2)) RHandController.instance.LoadLevel(2);
-        if (Input.GetKeyDown(KeyCode.Keypad3)) RHandController.instance.LoadLevel(3);
-        if (Input.GetKeyDown(KeyCode.Keypad4)) RHandController.instance.LoadLevel(4);
-        if (Input.GetKeyDown(KeyCode.Keypad5)) RHandController.instance.LoadLevel(5);
-        if (Input.GetKeyDown(KeyCode.Keypad6)) RHandController.instance.LoadLevel(6);
-        if (Input.GetKeyDown(KeyCode.Keypad7)) RHandController.instance.LoadLevel(7);
-        if (Input.GetKeyDown(KeyCode.Keypad8)) RHandController.instance.LoadLevel(8);
-        if (Input.GetKeyDown(KeyCode.Keypad9)) RHandController.instance.LoadLevel(9);
-        if (Input.GetKeyDown(KeyCode.Keypad0)) RHandController.instance.LoadLevel(10);
-
+        if (Input.GetKeyDown(KeyCode.Keypad1)) BResetController.instance.PlayReset(1);
+        if (Input.GetKeyDown(KeyCode.Keypad2)) BResetController.instance.PlayReset(2);
+        if (Input.GetKeyDown(KeyCode.Keypad3)) BResetController.instance.PlayReset(3);
+        if (Input.GetKeyDown(KeyCode.Keypad4)) BResetController.instance.PlayReset(4);
+        if (Input.GetKeyDown(KeyCode.Keypad5)) BResetController.instance.PlayReset(5);
+        if (Input.GetKeyDown(KeyCode.Keypad6)) BResetController.instance.PlayReset(6);
+        if (Input.GetKeyDown(KeyCode.Keypad7)) BResetController.instance.PlayReset(7);
+        if (Input.GetKeyDown(KeyCode.Keypad8)) BResetController.instance.PlayReset(8);
+        if (Input.GetKeyDown(KeyCode.Keypad9)) BResetController.instance.PlayReset(9);
+        if (Input.GetKeyDown(KeyCode.Keypad0)) BResetController.instance.PlayReset(10);
 #endif
+
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             SelectOption(selectedItem + 1, true);
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             SelectOption(selectedItem - 1, true);
+
         if (Input.GetMouseButtonDown(0) && selectedItem == 1 && Screen.instance.IsColor())
         {
             AudioSystem.instance.PlayDoorOpen();
             PlayerMessage.instance.Hide();
-            RHandController.instance.LoadLevel(1);
+            BResetController.instance.PlayReset(1);
         }
 
     }

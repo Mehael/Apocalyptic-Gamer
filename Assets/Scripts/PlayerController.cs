@@ -170,7 +170,7 @@ public class PlayerController : MonoBehaviour {
         PlayerMessage.instance.Show(DeatchMEssages);
 
         yield return new WaitForSeconds(1.5f);
-        RHandController.instance.LoadLevel(Application.loadedLevel);
+        BResetController.instance.PlayReset(Application.loadedLevel);
     }
 
     void Update () {

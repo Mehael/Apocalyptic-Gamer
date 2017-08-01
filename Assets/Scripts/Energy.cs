@@ -66,7 +66,7 @@ public class Energy : MonoBehaviour {
         Screen.instance.NoEnergy();
 
         if (currentEnergy == 0)
-            RHandController.instance.LoadLevel(Application.loadedLevel);
+            BResetController.instance.PlayReset(Application.loadedLevel);
     }
 
     private void SetEnergy(int value)
