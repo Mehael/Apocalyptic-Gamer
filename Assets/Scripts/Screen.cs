@@ -40,7 +40,7 @@ public class Screen : MonoBehaviour
 
     public void Start()
     {
-        SetState(Application.loadedLevel == 0 ? Power.None : Power.Full, true);
+        SetState(Application.loadedLevel == 0 ? Power.Gray : Power.Full, true);
     }
 
     public void LowEnergy()

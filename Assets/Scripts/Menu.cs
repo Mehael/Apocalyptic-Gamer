@@ -16,17 +16,38 @@ public class Menu : MonoBehaviour {
         instance = this;
     }
 
-    void Start () {
+    void Start ()
+    {
+        InputSystem.Instance.ButtonPressed += HandleButtonPress;
         SelectOption(0);
-        PlayerMessage.instance.Show("I need to switch on the screen by L_Mouse.", true);
-	}
+        PlayerMessage.instance.Show("I need to switch on the screen to see more stuff.", true);
+    }
+
+    private void OnDestroy()
+    {
+        InputSystem.Instance.ButtonPressed -= HandleButtonPress;
+    }
+
+    private void HandleButtonPress(InputButton button)
+    {
+        if (button == InputButton.Down)
+            SelectOption(selectedItem + 1, true);
+        if (button == InputButton.Up)
+            SelectOption(selectedItem - 1, true);
+        if (button == InputButton.Start && selectedItem == 1 && Screen.instance.IsColor())
+        {
+            AudioSystem.instance.PlayDoorOpen();
+            PlayerMessage.instance.Hide();
+            BResetController.instance.PlayReset(1);
+        }
+    }
 
     public virtual void Gray()
     {
         foreach (var i in coloredParts)
             i.SetActive(false);
 
-        PlayerMessage.instance.Show("Hm. I need to increase energy spending by L_Mouse.", true);
+        PlayerMessage.instance.Show("Hm. I need to increase energy spending with slider.", true);
     }
 
     public virtual void Color()
@@ -35,7 +56,7 @@ public class Menu : MonoBehaviour {
             i.SetActive(true);
 
         SelectOption(0);
-        PlayerMessage.instance.Show("Change option by WASD or Arrows.", true);
+        PlayerMessage.instance.Show("I can change selection with arrows.", true);
     }
 
     virtual public void SelectOption(int v, bool isNatural = false)
@@ -46,7 +67,7 @@ public class Menu : MonoBehaviour {
         if (v > buttons.Count - 1) v = buttons.Count - 1;
 
         if (v == 1 && Screen.instance.IsColor())
-            PlayerMessage.instance.Show("Great. I can select menu option by L_Mouse.", true);
+            PlayerMessage.instance.Show("Great. I can select menu option with Start.", true);
 
         Selector.position = buttons[v].transform.position;
         selectedItem = v;
@@ -64,8 +85,8 @@ public class Menu : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Keypad8)) BResetController.instance.PlayReset(8);
         if (Input.GetKeyDown(KeyCode.Keypad9)) BResetController.instance.PlayReset(9);
         if (Input.GetKeyDown(KeyCode.Keypad0)) BResetController.instance.PlayReset(10);
-#endif
 
+        return;
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             SelectOption(selectedItem + 1, true);
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
@@ -77,6 +98,6 @@ public class Menu : MonoBehaviour {
             PlayerMessage.instance.Hide();
             BResetController.instance.PlayReset(1);
         }
-
+#endif
     }
 }

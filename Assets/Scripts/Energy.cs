@@ -84,7 +84,7 @@ public class Energy : MonoBehaviour {
         currentEnergy = value;
 
         if (Application.loadedLevel == 1 && currentEnergy < 45 && Screen.instance.IsColor())
-            PlayerMessage.instance.Show("NOOO! I should decrease energy spending by R_Mouse.");
+            PlayerMessage.instance.Show("NOOO! I should decrease energy spending with slider.");
 
         energyLabel.text = currentEnergy.ToString();
     }

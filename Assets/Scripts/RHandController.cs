@@ -28,15 +28,5 @@ public class RHandController : MonoBehaviour {
         anim.SetTrigger("Like");
     }
 
-    public void ResTime()
-    {
-        BResetController.instance.PlayReset(nextLevel);
-    }
-
-    private int nextLevel;
-    public void LoadLevel(int levelIndex)
-    {
-        nextLevel = levelIndex;
-        ButtaryReset();
-    }
+    
 }

@@ -49,9 +49,10 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Start () {
+        InputSystem.Instance.ButtonPressed += HandleButtonPress;
         board = Board.current;
         MoveTo(board.enterPoint, true);
-	}
+    }
 
     public void Color()
     {
@@ -173,7 +174,27 @@ public class PlayerController : MonoBehaviour {
         BResetController.instance.PlayReset(Application.loadedLevel);
     }
 
+    private void OnDestroy()
+    {
+        InputSystem.Instance.ButtonPressed -= HandleButtonPress;
+    }
+
+    private void HandleButtonPress(InputButton button)
+    {
+        if (Energy.instance.currentEnergy == 0) return;
+
+        if (button == InputButton.Down)
+            MoveTo(coords + Vector2.down);
+        if (button == InputButton.Up)
+            MoveTo(coords + Vector2.up);
+        if (button == InputButton.Left)
+            MoveTo(coords + Vector2.left);
+        if (button == InputButton.Right)
+            MoveTo(coords + Vector2.right);
+    }
+
     void Update () {
+        return;
         if (Energy.instance.currentEnergy == 0) return;
 
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
