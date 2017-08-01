@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour {
 
     private void MoveHeroSprite(Vector2 enterPoint)
     {
-        transform.position = new Vector3(enterPoint.x + 0.5f, enterPoint.y + 0.5f, (enterPoint.y / 10) - 0.09f);
+        transform.position = new Vector3(enterPoint.x + 0.5f, enterPoint.y + 0.5f, (enterPoint.y / 10) - 0.08f);
     }
 
     List<String> WallMEssages = new List<string>()

@@ -16,7 +16,9 @@ public class PlayerMessage : MonoBehaviour {
 
     public void Show(List<string> inputList)
     {
+        if (Application.loadedLevel <= 1) return;
         if (Random.Range(0, 10) > 1) return;
+
         Show(inputList[Random.Range(0, inputList.Count - 1)]);
     }
 
