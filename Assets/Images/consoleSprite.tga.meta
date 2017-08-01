@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: fbd1ff9943472964aaad9788864d8fde
-timeCreated: 1501398621
+timeCreated: 1501551286
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -15,6 +15,10 @@ TextureImporter:
     21300016: Battary
     21300018: bubble
     21300020: tie
+    21300022: PadLeft
+    21300024: PadUp
+    21300026: PadRight
+    21300028: PadDown
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -200,7 +204,7 @@ TextureImporter:
         width: 42
         height: 45
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 16, y: 17, z: 13, w: 16}
       outline: []
       physicsShape: []
@@ -213,6 +217,62 @@ TextureImporter:
         y: 440
         width: 21
         height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PadLeft
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 390
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PadUp
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 430
+        width: 43
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PadRight
+      rect:
+        serializedVersion: 2
+        x: 948
+        y: 392
+        width: 43
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PadDown
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 350
+        width: 43
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

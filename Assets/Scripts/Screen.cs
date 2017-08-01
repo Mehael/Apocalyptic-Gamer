@@ -1,20 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
-public enum Power { zerodivision, none, gray, full, overcharge };
 
 public class Screen : MonoBehaviour
 {
-    public Power startPower = Power.full;
+    public Power startPower = Power.Full;
     public static Screen instance;
 
-    public Transform OffMarker;
-    public Transform OnMarker;
-    public Transform GrayMarker;
-
-    public Transform CurrentMarker;
+    public PowerStateSliderView PowerStateSlider;
     public GameObject glow;
 
     private Power currentPower;
@@ -22,6 +15,7 @@ public class Screen : MonoBehaviour
 
     private void Awake()
     {
+        PowerStateSlider.StateChanged += state => SetState(state);
         instance = this;
     }
 
@@ -46,31 +40,29 @@ public class Screen : MonoBehaviour
 
     public void Start()
     {
-        if (Application.loadedLevel == 0)
-            SetState(Power.none, true);
-        else
-            SetState(Power.full, true);
+        SetState(Application.loadedLevel == 0 ? Power.None : Power.Full, true);
     }
 
     public void LowEnergy()
     {
-        SetState(Power.gray);
+        SetState(Power.Gray);
         ConsoleMessage.instance.Show("Low batteries");
     }
 
     public void NoEnergy()
     {
-        SetState(Power.none);
+        SetState(Power.None);
     }
 
     private void SetState(Power newPower, bool isInit = false)
     {
-        if ((newPower == Power.overcharge) || (newPower == Power.zerodivision)) return;
+        if ((newPower == Power.Overcharge) || (newPower == Power.Zerodivision)) return;
 
         currentPower = newPower;
         Energy.instance.SetPowerState(currentPower, isInit);
+        PowerStateSlider.SetState(newPower);
 
-        if (currentPower == Power.none)
+        if (currentPower == Power.None)
         {
             AudioSystem.instance.PlayBLIND();
 
@@ -81,7 +73,6 @@ public class Screen : MonoBehaviour
 
             glow.SetActive(false);
             offedScreen.gameObject.SetActive(true);
-            CurrentMarker.position = OffMarker.position;
             return;
         }
 
@@ -90,7 +81,7 @@ public class Screen : MonoBehaviour
         glow.SetActive(true);
         offedScreen.gameObject.SetActive(false);
 
-        if (currentPower == Power.gray)
+        if (currentPower == Power.Gray)
         {
             if (Application.loadedLevel > 1)
                 PlayerMessage.instance.Show(GrayMessages);
@@ -108,7 +99,6 @@ public class Screen : MonoBehaviour
                 foreach (var tile in Board.current.items.Values)
                     tile.GrayTint();
             }
-            CurrentMarker.position = GrayMarker.position;
         }
         else
         {
@@ -128,17 +118,17 @@ public class Screen : MonoBehaviour
                 foreach (var tile in Board.current.items.Values)
                     tile.ColorTint();
             }
-            CurrentMarker.position = OnMarker.position;
         }
     }
 
     internal bool IsColor()
     {
-        return currentPower == Power.full;
+        return currentPower == Power.Full;
     }
 
     void Update()
     {
+        return;
         if (Input.GetKeyDown(KeyCode.Minus) || Input.GetKeyDown(KeyCode.KeypadMinus) || Input.GetMouseButtonDown(1))
             SetState(currentPower - 1);
         if (Input.GetKeyDown(KeyCode.Plus) || Input.GetKeyDown(KeyCode.KeypadPlus) || Input.GetMouseButtonDown(0))

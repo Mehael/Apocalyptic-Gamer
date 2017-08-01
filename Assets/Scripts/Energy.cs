@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,28 +25,28 @@ public class Energy : MonoBehaviour {
 
     public void SetPowerState(Power newState, bool IsInit = false)
     {
-        if (energState != Power.zerodivision && energState == newState) return;
-            energState = newState;
+        if (energState != Power.Zerodivision && energState == newState) return;
+        energState = newState;
 
         if (IsInit) return;
 
-        if (energState == Power.gray)
-            RemoveEnergy(moveWithGrayModeCost);
-        if (energState == Power.full)
-            RemoveEnergy(moveWithColorModeCost);
+        if (energState == Power.Gray)
+            RemoveEnergy(switchOnGrayModeCost);
+        if (energState == Power.Full)
+            RemoveEnergy(switchOnColorModeCost);
     }
 
     public void Move()
     {
-        if (energState == Power.gray)
-            RemoveEnergy(switchOnGrayModeCost);
-        else if (energState == Power.full)
-            RemoveEnergy(switchOnColorModeCost);
+        if (energState == Power.Gray)
+            RemoveEnergy(moveWithGrayModeCost);
+        else if (energState == Power.Full)
+            RemoveEnergy(moveWithColorModeCost);
         else
             RemoveEnergy(moveWithoutScreenCost);
     }
 
-    public void Start() 
+    public void Start()
     {
         energyLabel.gameObject.SetActive(true);
         if (Board.current == null)
