@@ -32,13 +32,20 @@ public class PlayerController : MonoBehaviour {
         "I assume, It's a bad idea to step on it",
     };
 
+
+    bool didShowSlimeMessage = false;
     public void BecomeSlimed(Tile slime)
     {
+        if (Application.loadedLevel == 5 && !didShowSlimeMessage){
+            PlayerMessage.instance.Show("Dirty Slime!\nGo the hole.");
+            didShowSlimeMessage = true;        
+        }
+        else
+            PlayerMessage.instance.Show(slimedMEssgaes);
+
         AudioSystem.instance.PlaySlime();
         SlimedHPCounter = SlimedHP;
         Slime = slime;
-
-        PlayerMessage.instance.Show(slimedMEssgaes);
     }
 
     void Start () {
