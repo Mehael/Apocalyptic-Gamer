@@ -15,7 +15,6 @@ public class Screen : MonoBehaviour
     public Transform GrayMarker;
 
     public Transform CurrentMarker;
-    public GameObject glow;
 
     private Power currentPower;
     public Transform offedScreen;
@@ -79,7 +78,6 @@ public class Screen : MonoBehaviour
             else
                 PlayerMessage.instance.Show(BlindMessages);
 
-            glow.SetActive(false);
             offedScreen.gameObject.SetActive(true);
             CurrentMarker.position = OffMarker.position;
             return;
@@ -87,7 +85,6 @@ public class Screen : MonoBehaviour
 
         if (offedScreen == null) return;
 
-        glow.SetActive(true);
         offedScreen.gameObject.SetActive(false);
 
         if (currentPower == Power.gray)
