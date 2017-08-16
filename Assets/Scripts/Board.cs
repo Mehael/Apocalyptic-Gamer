@@ -8,7 +8,7 @@ public class Board : MonoBehaviour {
 
     public Transform overBoardNode;
 
-    public int StartEnergyForLevel = 100;
+    public int StartOilForLevel = 5;
     public Vector2 enterPoint;
     public List<Lock> exitPoints;
 

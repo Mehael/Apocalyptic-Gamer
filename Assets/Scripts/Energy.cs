@@ -10,13 +10,6 @@ public class Energy : MonoBehaviour {
     public static Energy instance;
     public Text deltaPrefab;
 
-    public int switchOnColorModeCost = 1;
-    public int switchOnGrayModeCost = 1;
-
-    public int moveWithoutScreenCost = 1;
-    public int moveWithGrayModeCost = 2;
-    public int moveWithColorModeCost = 3;
-
     private void Awake()
     {
         instance = this;
@@ -27,31 +20,38 @@ public class Energy : MonoBehaviour {
         if (energState != Power.zerodivision && energState == newState) return;
             energState = newState;
 
-        if (IsInit) return;
-
-        if (energState == Power.gray)
-            RemoveEnergy(moveWithGrayModeCost);
         if (energState == Power.full)
-            RemoveEnergy(moveWithColorModeCost);
+            RemoveEnergy(1);
     }
 
+
+    public int TurnsToDowngradeLight = 1;
+    public int CounterToDowngradeLight = 0; 
     public void Move()
     {
-        if (energState == Power.gray)
-            RemoveEnergy(switchOnGrayModeCost);
-        else if (energState == Power.full)
-            RemoveEnergy(switchOnColorModeCost);
-        else
-            RemoveEnergy(moveWithoutScreenCost);
+        if (energState == Power.none) return;
+
+        if (CounterToDowngradeLight < TurnsToDowngradeLight){
+            CounterToDowngradeLight++;
+            return;
+        }
+
+        if (energState == Power.full)
+            Screen.instance.SetState(Power.gray);
+        else if (energState == Power.gray) 
+            Screen.instance.SetState(Power.none);
+
+        CounterToDowngradeLight = 0;
     }
+
 
     public void Start() 
     {
         energyLabel.gameObject.SetActive(true);
         if (Board.current == null)
-            SetEnergy(76);
+            RHandController.instance.LoadLevel(1);
         else
-            SetEnergy(Board.current.StartEnergyForLevel);
+            SetEnergy(Board.current.StartOilForLevel);
     }
 
     IEnumerator WaitAnyKayToLoad()

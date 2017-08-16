@@ -10,12 +10,6 @@ public class Screen : MonoBehaviour
     public Power startPower = Power.full;
     public static Screen instance;
 
-    public Transform OffMarker;
-    public Transform OnMarker;
-    public Transform GrayMarker;
-
-    public Transform CurrentMarker;
-
     private Power currentPower;
     public Transform offedScreen;
 
@@ -62,7 +56,7 @@ public class Screen : MonoBehaviour
         SetState(Power.none);
     }
 
-    private void SetState(Power newPower, bool isInit = false)
+    public void SetState(Power newPower, bool isInit = false)
     {
         if ((newPower == Power.overcharge) || (newPower == Power.zerodivision)) return;
 
@@ -79,7 +73,6 @@ public class Screen : MonoBehaviour
                 PlayerMessage.instance.Show(BlindMessages);
 
             offedScreen.gameObject.SetActive(true);
-            CurrentMarker.position = OffMarker.position;
             return;
         }
 
@@ -105,7 +98,6 @@ public class Screen : MonoBehaviour
                 foreach (var tile in Board.current.items.Values)
                     tile.GrayTint();
             }
-            CurrentMarker.position = GrayMarker.position;
         }
         else
         {
@@ -125,7 +117,6 @@ public class Screen : MonoBehaviour
                 foreach (var tile in Board.current.items.Values)
                     tile.ColorTint();
             }
-            CurrentMarker.position = OnMarker.position;
         }
     }
 
@@ -136,9 +127,7 @@ public class Screen : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Minus) || Input.GetKeyDown(KeyCode.KeypadMinus) || Input.GetMouseButtonDown(1))
-            SetState(currentPower - 1);
-        if (Input.GetKeyDown(KeyCode.Plus) || Input.GetKeyDown(KeyCode.KeypadPlus) || Input.GetMouseButtonDown(0))
-            SetState(currentPower + 1);
+        if (Input.GetKeyDown(KeyCode.Space))
+            SetState(Power.full);
     }
 }
